@@ -20,3 +20,11 @@ All notable changes to this project will be documented in this file.
   - Graphics capabilities testing
 - Development branch for future improvements
 - Enhanced GitHub Actions workflow
+
+## [1.2.0] - 2024-03-19
+
+### Changed
+- Updated installation script to use KDE Neon repositories for Plasma 6
+- Modified package selection to ensure Plasma 6 components
+- Updated documentation with Plasma 6 specific instructions
+- Added version verification steps
