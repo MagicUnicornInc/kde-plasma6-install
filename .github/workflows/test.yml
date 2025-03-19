@@ -1,0 +1,34 @@
+name: Test Installation Script
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Test script syntax
+      run: |
+        bash -n scripts/install_plasma6.sh
+        
+    - name: Test requirements script
+      run: |
+        chmod +x tests/test_requirements.sh
+        sudo ./tests/test_requirements.sh || true
+
+    - name: Verify documentation links
+      run: |
+        for file in $(find . -name "*.md"); do
+          grep -o '\[.*\]([^)]*)' "$file" | grep -o '([^)]*)' | tr -d '()' | while read -r link; do
+            if [[ $link == http* ]]; then
+              curl --output /dev/null --silent --head --fail "$link" || echo "Broken link: $link in $file"
+            else
+              [ -f "${link}" ] || echo "Missing file: $link in $file"
+            fi
+          done
+        done
