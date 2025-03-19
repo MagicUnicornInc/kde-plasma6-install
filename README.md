@@ -1,10 +1,8 @@
 # KDE Plasma 6 Installation for Ubuntu 24.04
 
-Simple scripts to install KDE Plasma 6 on Ubuntu 24.04 LTS (Noble Numbat).
+Scripts to install the latest KDE Plasma 6 on Ubuntu 24.04 LTS (Noble Numbat).
 
 ## Quick Installation (Fresh Ubuntu 24.04 Server)
-
-Just three commands to get started:
 
 ```bash
 # 1. Clone the repository
@@ -15,40 +13,44 @@ cd kde-plasma6-install
 
 # 3. Run the installation script
 sudo ./scripts/install_plasma6.sh
-```
 
-After the script completes, simply reboot your system:
-```bash
+# 4. Reboot your system
 sudo reboot
 ```
 
+After reboot, select 'Plasma' at the login screen to ensure you're using Plasma 6.
+
 ## What's Included
 
-- Minimal KDE Plasma 6 desktop environment
-- Basic KDE applications (Konsole, Dolphin, Kate)
-- HWE kernel for better hardware support
-- Proper system configuration
+- Latest KDE Plasma 6 desktop environment
+- Essential KDE applications:
+  - Dolphin (file manager)
+  - Konsole (terminal)
+  - Kate (text editor)
+- Network and audio management
+- SDDM display manager
+
+## Verification
+
+To verify you have Plasma 6 installed, run:
+```bash
+plasmashell --version
+```
+
+This should show version 6.x.x
 
 ## Requirements
 
-- Ubuntu 24.04 LTS Server (Noble Numbat)
+- Ubuntu 24.04 LTS Server
 - Internet connection
 - 20GB free disk space
 - 4GB RAM minimum (8GB recommended)
 
-## Advanced Usage
-
-See the [detailed installation guide](docs/kde_plasma6_install_guide.md) for:
-- Manual installation steps
-- Customization options
-- Troubleshooting
-- Additional software recommendations
-
 ## Support
 
-If you encounter any issues, please check:
-- [Installation Guide](docs/kde_plasma6_install_guide.md)
-- [GitHub Issues](https://github.com/MagicUnicornInc/kde-plasma6-install/issues)
+If you encounter any issues, please:
+1. Check the [Installation Guide](docs/kde_plasma6_install_guide.md)
+2. Visit [GitHub Issues](https://github.com/MagicUnicornInc/kde-plasma6-install/issues)
 
 ## License
 
