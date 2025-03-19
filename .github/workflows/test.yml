@@ -2,7 +2,7 @@ name: Test Installation Script
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, development ]
   pull_request:
     branches: [ main ]
 
@@ -12,16 +12,23 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Install test dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y curl mesa-utils
+    
     - name: Test script syntax
       run: |
         bash -n scripts/install_plasma6.sh
         
-    - name: Test requirements script
+    - name: Run all tests
       run: |
-        chmod +x tests/test_requirements.sh
-        sudo ./tests/test_requirements.sh || true
+        for test in tests/test_*.sh; do
+          chmod +x "$test"
+          sudo "$test" || echo "Warning: $test failed"
+        done
 
-    - name: Verify documentation links
+    - name: Verify documentation
       run: |
         for file in $(find . -name "*.md"); do
           grep -o '\[.*\]([^)]*)' "$file" | grep -o '([^)]*)' | tr -d '()' | while read -r link; do
